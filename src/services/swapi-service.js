@@ -18,7 +18,7 @@ export default class SwapiService {
     }
   
     getPlanet(id) {
-      return this.getResource(`/planet/${id}`);
+      return this.getResource(`/planets/${id}`);
     }
   
     async getAllStarships() {
