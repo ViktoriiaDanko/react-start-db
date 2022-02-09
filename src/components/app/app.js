@@ -9,12 +9,12 @@ import './app.css';
 export default class App extends Component {
 
     state = {
-        selectedPerson: 5
+        selectedPerson: null
     };
 
     onPersonSelected = (id) => {
         this.setState({
-          selectedPerson: id
+          selectedPerson: id + 1
         });
       };
 

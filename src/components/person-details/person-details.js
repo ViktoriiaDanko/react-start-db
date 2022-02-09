@@ -24,7 +24,7 @@ export default class PersonDetails extends Component {
   updatePerson() {
     const { personId } = this.props;
 
-    if(!personId) {
+    if(personId === null) {
       return
     }
 
@@ -38,10 +38,11 @@ export default class PersonDetails extends Component {
   render() {
 
     if (!this.state.person) {
-      return <span>Select a person from a list</span>
+      return <span>Select a person from a list</span>;
     }
 
-    const { id, name, gender, birthYear, eyeColor } = this.state.person;
+    const { id, name, gender,
+              birthYear, eyeColor } = this.state.person;
 
     return (
       <div className="person-details card">
