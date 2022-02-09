@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SwapiService from '../../services/swapi-service';
 import Spinner from '../spinner';
+import ErrorIndicator from '../error-indicator';
 
 import './item-list.css';
 
@@ -9,7 +10,9 @@ export default class ItemList extends Component {
     SwapiService = new SwapiService();
 
     state = {
-        peopleList: null
+        peopleList: null,
+        loading: true,
+        error: false
     };
 
     componentDidMount() {
@@ -22,6 +25,13 @@ export default class ItemList extends Component {
             })
             .catch()
     }
+
+    onError = (err) => {
+        this.setState({
+          error: true,
+          loading: false
+        });
+      }
 
     renderItems(arr) {
         return arr.map((person, id) => {
@@ -38,7 +48,7 @@ export default class ItemList extends Component {
 
     render() {
 
-        const { peopleList } = this.state;
+        const { peopleList, loading, error } = this.state;
 
         if(!peopleList) {
             return <Spinner />
